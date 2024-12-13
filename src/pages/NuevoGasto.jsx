@@ -1,13 +1,15 @@
 import { useState } from "react";
-import Gastos from "./Gastos.jsx";
 import { useDispatch } from "react-redux";
-import services from "./services/backEndConnection.js";
-export function NuevoGasto() {
+import services from "../services/backEndConnection.js";
+import { useNavigate } from "react-router-dom";
+import arrow from "../arrow.png";
+import { Link } from "react-router-dom";
+function NuevoGasto() {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("Otros");
   const categorias = ["Restaurantes", "Supermercado", "Automovil", "Salud", "Otros"];
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const handleClick = (categoria) => {
     setSelected(categoria);
   };
@@ -18,7 +20,8 @@ export function NuevoGasto() {
     const fecha = e.target.elements.fecha.value
       ? e.target.elements.fecha.value
       : new Date().toISOString().split("T")[0];
-    if (!monto && !fecha) {
+    console.log(monto);
+    if (!monto || !fecha) {
       setError("Datos incompletos");
       setTimeout(() => {
         setError("");
@@ -26,19 +29,20 @@ export function NuevoGasto() {
       return;
     }
     services
-      .addGasto({ monto, concepto, fecha, categoria: selected, userID: "674f3cc6c7ab2f3759b33257" })
-      .then((response) => {
-        console.log(response);
-      });
-    dispatch({
-      type: "AGREGAR_GASTO",
-      payload: {
-        monto: monto,
+      .addGasto({
+        monto,
         concepto: concepto.charAt(0).toUpperCase() + concepto.slice(1),
+        fecha,
         categoria: selected,
-        fecha: fecha ? fecha : new Date().toISOString().split("T")[0],
-      },
-    });
+        userID: "674f3cc6c7ab2f3759b33257",
+      })
+      .then((response) => {
+        dispatch({
+          type: "AGREGAR_GASTO",
+          payload: response.response,
+        });
+        navigate("/");
+      });
     // console.log("Monto: ", monto);
     // console.log("Concepto: ", concepto.charAt(0).toUpperCase() + concepto.slice(1));
     // console.log("Categoría: ", selected);
@@ -49,11 +53,19 @@ export function NuevoGasto() {
   };
   return (
     <>
-      <Gastos />
-      <br />
-      <headder className="flex flex-col items-center bg-blue-700 py-2 rounded-b-3xl mx-3">
+      <header className="relative flex  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3">
+        <Link
+          to="/"
+          className="flex items-center"
+        >
+          <img
+            src={arrow}
+            alt="Go back"
+            className="w-6 absolute left-5 flex  invert"
+          />
+        </Link>
         <h1 className="text-2xl text-white font-semibold  ">Añadir nuevo gasto</h1>
-      </headder>
+      </header>
 
       <main className="w-full mb-5 ">
         <form
@@ -100,6 +112,7 @@ export function NuevoGasto() {
               type="text"
               name="concepto"
               placeholder="Escribe un comentario..."
+              maxLength="25"
             />
           </div>
           <div className="mt-5 ">
@@ -132,3 +145,4 @@ export function NuevoGasto() {
     </>
   );
 }
+export default NuevoGasto;

@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 export function TarjetaCategorias({ categoria }) {
   // console.log(categoria);
+  const navigate = useNavigate();
   return (
-    <div className="shadow flex  flex-1 justify-between items-center rounded-xl px-2 mb-5">
+    <div
+      onClick={() => navigate(`/categorias/${categoria[0]}`)}
+      className="shadow flex  flex-1 justify-between items-center rounded-xl px-2 mb-5"
+    >
       <img
         className=" w-1/4 p-1 translate-x-[-10px]"
         src="https://static.vecteezy.com/system/resources/thumbnails/010/674/548/small_2x/fork-and-knife-cartoon-icon-illustration-food-object-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"

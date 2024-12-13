@@ -1,8 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Gastos from "./Gastos.jsx";
-import { NuevoGasto } from "./NuevoGasto.jsx";
+import { App } from "./App.jsx";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 import { gastosReducer } from "./reducers/gastosReducer.js";
@@ -11,7 +10,7 @@ const store = createStore(reducers);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <NuevoGasto />
+      <App />
     </Provider>
   </StrictMode>
 );
