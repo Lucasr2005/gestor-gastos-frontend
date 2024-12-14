@@ -55,7 +55,7 @@ function NuevoGasto() {
     <>
       <header className="relative flex  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3">
         <Link
-          to="/"
+          to="/login"
           className="flex items-center"
         >
           <img
