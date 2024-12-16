@@ -1,8 +1,11 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 const url = "http://localhost:3001/api/gastos"
-async function getGastos() {
+async function getGastos(user) {
     try {
-        const result = await axios.get(`${url}/674f3cc6c7ab2f3759b33257`)
+        const result = await axios.get(`${url}/${user}`)
+        console.log(result)
         return result.data
     }
     catch (error) {
@@ -11,6 +14,7 @@ async function getGastos() {
     }
 }
 async function addGasto(gasto) {
+    console.log(gasto)
     try {
         const result = await axios.post(url, gasto)
         return result.data

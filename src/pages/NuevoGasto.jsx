@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import services from "../services/backEndConnection.js";
+import { useDispatch, useSelector } from "react-redux";
+import gastosServices from "../services/gastosServices.js";
 import { useNavigate } from "react-router-dom";
 import arrow from "../arrow.png";
 import { Link } from "react-router-dom";
+import { Error } from "../components/error.jsx";
 function NuevoGasto() {
+  const user = useSelector((state) => state.userId);
+
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("Otros");
   const categorias = ["Restaurantes", "Supermercado", "Automovil", "Salud", "Otros"];
@@ -28,13 +31,13 @@ function NuevoGasto() {
       }, 3000);
       return;
     }
-    services
+    gastosServices
       .addGasto({
         monto,
         concepto: concepto.charAt(0).toUpperCase() + concepto.slice(1),
         fecha,
         categoria: selected,
-        userID: "674f3cc6c7ab2f3759b33257",
+        userID: user,
       })
       .then((response) => {
         dispatch({
@@ -43,10 +46,6 @@ function NuevoGasto() {
         });
         navigate("/");
       });
-    // console.log("Monto: ", monto);
-    // console.log("Concepto: ", concepto.charAt(0).toUpperCase() + concepto.slice(1));
-    // console.log("Categoría: ", selected);
-    // console.log("Fecha: ", fecha ? fecha : new Date().toISOString().split("T")[0]);
 
     setSelected("Otros");
     e.target.reset();
@@ -128,20 +127,7 @@ function NuevoGasto() {
           </button>
         </form>
       </main>
-      {error ? (
-        <section className="absolute top-0 right-0">
-          <div className="bg-red-600 text-white py-1 px-1  mt-12 rounded-lg flex items-center ">
-            <img
-              className=" w-14 p-2 "
-              src="https://th.bing.com/th/id/R.2bed163f699df7f5d112342b436d1c51?rik=8cZb6k6hWZlOpw&pid=ImgRaw&r=0"
-              alt=""
-            />
-            <p className="text-xl">{error}</p>
-          </div>
-        </section>
-      ) : (
-        ""
-      )}
+      {error ? <Error message={error} /> : ""}
     </>
   );
 }

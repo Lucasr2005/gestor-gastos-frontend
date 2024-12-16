@@ -3,7 +3,7 @@ import "../Gastos.css";
 import { Chart } from "react-google-charts";
 import { TarjetaCategorias } from "../components/tarjetaCategorias.jsx";
 import { useEffect } from "react";
-import services from "../services/backEndConnection.js";
+import gastosServices from "../services/gastosServices.js";
 import { Link } from "react-router-dom";
 
 function Gastos() {
