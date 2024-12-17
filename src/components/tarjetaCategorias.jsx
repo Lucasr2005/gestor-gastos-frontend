@@ -40,7 +40,7 @@ export function TarjetaCategorias({ categoria }) {
           alt=""
         />
       </div>
-      <h3 className="text-lg font-semibold text-left w-24 translate-x-[-25px]">{categoria[0]}</h3>
+      <h3 className="text-lg font-semibold text-left min-w-32 max-w-32 ">{categoria[0]}</h3>
       <p>${categoria[1]}</p>
     </div>
   );
