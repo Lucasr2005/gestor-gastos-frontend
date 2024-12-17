@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const url = "http://localhost:3001/api/gastos"
+const url = "https://gestor-gastos-backend.vercel.app/api/gastos"
 async function getGastos(user) {
     try {
         const result = await axios.get(`${url}/${user}`)
