@@ -40,11 +40,11 @@ function Categorias() {
         <h1 className="text-2xl text-white font-semibold">{categoria}</h1>
       </header>
       <div className=" flex  flex-1 items-center  px-4 mx-4  mb-5">
-        <h3 className="text-lg font-semibold text-left max-w-32 min-w-32 justify-start">
+        <h3 className="text-lg font-semibold text-left max-w-32 min-w-32 justify-center pl-2">
           Concepto
         </h3>
-        <h3 className="text-lg font-medium text-center max-w-24 min-w-24">Monto</h3>
-        <p className="max-w-28 min-w-28 text-center">Fecha</p>
+        <h3 className="text-lg font-medium text-center max-w-20 min-w-20 pl-2">Monto</h3>
+        <p className="max-w-24 min-w-24 text-center">Fecha</p>
       </div>
       {gastos.map((gasto) => {
         return (
@@ -55,8 +55,8 @@ function Categorias() {
             <h3 className="text-lg font-semibold text-left max-w-32 min-w-32 whitespace-wrap overflow-clip">
               {gasto.concepto ? gasto.concepto : `Gasto en ${categoria}`}
             </h3>
-            <h3 className="text-lg font-medium text-center max-w-24 min-w-24">${gasto.monto}</h3>
-            <p className="max-w-28 min-w-28 text-center">
+            <h3 className="text-lg font-medium text-center max-w-20 min-w-20">${gasto.monto}</h3>
+            <p className="max-w-24 min-w-24 text-center">
               {new Date(gasto.fecha).toISOString().split("T")[0]}
             </p>
           </div>

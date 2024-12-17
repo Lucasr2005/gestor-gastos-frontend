@@ -5,9 +5,20 @@ import { useNavigate } from "react-router-dom";
 import arrow from "../arrow.png";
 import { Link } from "react-router-dom";
 import { Error } from "../components/error.jsx";
+import restaurantes from "../images/restaurantes.webp";
+import supermercado from "../images/supermercado.webp";
+import automovil from "../images/automovil.webp";
+import salud from "../images/salud.webp";
+import otros from "../images/otros.webp";
 function NuevoGasto() {
   const user = useSelector((state) => state.userId);
-
+  const colors = {
+    Salud: "#109618",
+    Supermercado: "#FF9900",
+    Automovil: "#3366cc",
+    Restaurantes: "#dc3912",
+    Otros: "#990099",
+  };
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("Otros");
   const categorias = ["Restaurantes", "Supermercado", "Automovil", "Salud", "Otros"];
@@ -94,11 +105,26 @@ function NuevoGasto() {
                   }`}
                   onClick={() => handleClick(categoria)}
                 >
-                  <img
-                    className=" w-20 p-2 "
-                    src="https://static.vecteezy.com/system/resources/thumbnails/010/674/548/small_2x/fork-and-knife-cartoon-icon-illustration-food-object-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
-                    alt=""
-                  />
+                  <div
+                    className="w-16 h-16 flex justify-center items-center  rounded-full "
+                    style={{ backgroundColor: colors[categoria] }}
+                  >
+                    <img
+                      className=" w-12  p-1 invert"
+                      src={
+                        categoria === "Restaurantes"
+                          ? restaurantes
+                          : categoria === "Supermercado"
+                          ? supermercado
+                          : categoria === "Automovil"
+                          ? automovil
+                          : categoria === "Salud"
+                          ? salud
+                          : otros
+                      }
+                      alt=""
+                    />
+                  </div>
                   <h4>{categoria}</h4>
                 </div>
               ))}
