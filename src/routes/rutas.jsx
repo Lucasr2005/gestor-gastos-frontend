@@ -4,6 +4,7 @@ import Gastos from "../pages/Gastos.jsx";
 import Categorias from "../pages/Categorias.jsx";
 import Login from "../pages/Login.jsx";
 import { ProtectedRoute } from "../middleWare/protectedRoute.jsx";
+import Register from "../pages/Register.jsx";
 export function Rutas() {
   return (
     <BrowserRouter>
@@ -28,6 +29,10 @@ export function Rutas() {
         <Route
           path="/login"
           element={<Login />}
+        />
+        <Route
+          path="/register"
+          element={<Register />}
         />
       </Routes>
     </BrowserRouter>

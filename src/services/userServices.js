@@ -8,8 +8,18 @@ async function getUser(props) {
         return result.data
     }
     catch (error) {
-        return error.response.data
+        throw new Error(error.response.data.error)
+
     }
 }
+async function newUser(props) {
+    try {
+        const result = await axios.post(url, props);
 
-export default { getUser }
+        return result.data
+    }
+    catch (error) {
+        throw new Error(error.response.data.error)
+    }
+}
+export default { getUser, newUser }

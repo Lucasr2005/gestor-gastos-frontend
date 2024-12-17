@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import gastosServices from "../services/gastosServices.js";
 import { GoogleLogin } from "../components/GoogleLogin.jsx";
 import { BottomForm } from "../components/BottomForm.jsx";
-function Login() {
+function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -14,6 +14,8 @@ function Login() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const samePassword = e.target.samePassword.value;
+
     if (!email || !password) {
       setError("Datos incompletos");
       setTimeout(() => {
@@ -26,11 +28,16 @@ function Login() {
         setError("");
       }, 3000);
       return;
+    } else if (password !== samePassword) {
+      setError("Contraseñas diferentes");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
     }
     userServices
-      .getUser({ email, password })
+      .newUser({ email, password })
       .then((response) => {
-        console.log(response);
         dispatch({
           type: "getUser",
           payload: response._id,
@@ -58,7 +65,7 @@ function Login() {
       <section className="mx-auto h-screen absolute z-10 left-0 right-0 flex flex-col justify-center items-center ">
         <form
           onSubmit={formSubmit}
-          className="flex flex-col  shadow    p-4  h-72   rounded-xl"
+          className="flex flex-col  shadow    p-4  h-fit   rounded-xl"
         >
           <GoogleLogin />
           <input
@@ -74,11 +81,18 @@ function Login() {
             minLength={8}
             className="flex border-solid border-2 border-gray-500  items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-5"
           />
-          <BottomForm type="login" />
+          <input
+            type="password"
+            name="samePassword"
+            placeholder="Repite tu Contraseña"
+            minLength={8}
+            className="flex border-solid border-2 border-gray-500  items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-5"
+          />
+          <BottomForm type="Registo" />
         </form>
       </section>
       {error ? <Error message={error} /> : ""}
     </>
   );
 }
-export default Login;
+export default Register;
