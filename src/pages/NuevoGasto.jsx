@@ -63,7 +63,10 @@ function NuevoGasto() {
   };
   return (
     <>
-      <header className="relative flex  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3">
+      <header
+        className="relative flex  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3
+      md:py-4"
+      >
         <Link
           to="/"
           className="flex items-center"
@@ -74,29 +77,48 @@ function NuevoGasto() {
             className="w-6 absolute left-5 flex  invert"
           />
         </Link>
-        <h1 className="text-2xl text-white font-semibold  ">Añadir nuevo gasto</h1>
+        <h1
+          className="text-2xl text-white font-semibold  
+        md:text-3xl"
+        >
+          Añadir nuevo gasto
+        </h1>
       </header>
 
       <main className="w-full mb-5 ">
         <form
-          className="flex flex-col ml-5"
+          className="flex flex-col mx-5
+          md:mx-32"
           onSubmit={formSubmit}
         >
-          <div className="mt-5">
-            <h3 className="text-xl font-semibold ">Monto</h3>
+          <div className="mt-5 md:mt-10">
+            <h3
+              className="text-xl font-semibold
+            md:text-3xl "
+            >
+              Monto
+            </h3>
             <input
-              className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none  ml-2"
+              className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none  ml-2
+              md:h-16 md:text-lg"
               name="monto"
               type="Number"
               step="0.01"
-              title="Currency"
               placeholder="Ingresa el importe a pagar...."
               required
             />
           </div>
           <section className="mt-5 ">
-            <h3 className="text-xl font-semibold ">Categoría</h3>
-            <div className="grid grid-cols-3 gap-2 mx-2">
+            <h3
+              className="text-xl font-semibold 
+            md:text-3xl md:mb-10"
+            >
+              Categoría
+            </h3>
+            <div
+              className="grid grid-cols-3 gap-2 mx-2
+            md:gap-10"
+            >
               {categorias.map((categoria) => (
                 <div
                   key={categoria}
@@ -106,11 +128,13 @@ function NuevoGasto() {
                   onClick={() => handleClick(categoria)}
                 >
                   <div
-                    className="w-16 h-16 flex justify-center items-center  rounded-full "
+                    className="w-16 h-16 flex justify-center items-center  rounded-full 
+                    md:w-20 md:h-20"
                     style={{ backgroundColor: colors[categoria] }}
                   >
                     <img
-                      className=" w-12  p-1 invert"
+                      className=" w-12  p-1 invert
+                      md:w-16"
                       src={
                         categoria === "Restaurantes"
                           ? restaurantes
@@ -125,15 +149,21 @@ function NuevoGasto() {
                       alt=""
                     />
                   </div>
-                  <h4>{categoria}</h4>
+                  <h4 className="md:text-xl">{categoria}</h4>
                 </div>
               ))}
             </div>
           </section>
           <div className="mt-5">
-            <h3 className="text-xl font-semibold ">Concepto</h3>
+            <h3
+              className="text-xl font-semibold 
+            md:text-3xl "
+            >
+              Concepto
+            </h3>
             <input
-              className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none ml-2"
+              className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none ml-2
+              md:h-16 md:text-lg"
               type="text"
               name="concepto"
               placeholder="Escribe un comentario..."
@@ -141,14 +171,23 @@ function NuevoGasto() {
             />
           </div>
           <div className="mt-5 ">
-            <h3 className="text-xl font-semibold ">Fecha</h3>
+            <h3
+              className="text-xl font-semibold 
+            md:text-3xl"
+            >
+              Fecha
+            </h3>
             <input
               type="date"
               name="fecha"
-              className="bg-gray-300 p-3 rounded-lg mt-3 cursor-pointer ml-2 "
+              className="bg-gray-300 p-3 rounded-lg mt-3 cursor-pointer ml-2
+              md:text-xl md:py-4 "
             />
           </div>
-          <button className="bg-blue-700 py-2 px-8 text-white text-xl rounded-xl m-auto my-5">
+          <button
+            className="bg-blue-700 py-2 px-8 text-white text-xl rounded-xl m-auto my-5
+          md:text-3xl md:py-4 md:mt-10"
+          >
             Añadir gasto
           </button>
         </form>

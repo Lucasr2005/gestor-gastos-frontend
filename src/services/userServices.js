@@ -15,7 +15,6 @@ async function getUser(props) {
 async function newUser(props) {
     try {
         const result = await axios.post(url, props);
-
         return result.data
     }
     catch (error) {

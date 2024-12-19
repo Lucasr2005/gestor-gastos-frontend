@@ -59,34 +59,47 @@ function Register() {
   }
   return (
     <>
-      <header className="  flex absolute left-0 right-0  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3 ">
-        <h1 className="text-2xl text-white font-semibold  ">Iniciar sesión</h1>
+      <header
+        className="  flex absolute left-0 right-0  justify-center items-center bg-blue-700 py-2 rounded-b-3xl mx-3 
+      md:h-20"
+      >
+        <h1
+          className="text-2xl text-white font-semibold 
+        md:text-3xl "
+        >
+          Registro
+        </h1>
       </header>
       <section className="mx-auto h-screen absolute z-10 left-0 right-0 flex flex-col justify-center items-center ">
         <form
           onSubmit={formSubmit}
-          className="flex flex-col  shadow    p-4  h-fit   rounded-xl"
+          className="flex flex-col  shadow p-4  rounded-xl sm:mt-10
+          md:h-fit md:w-fit
+          lg:w-fit"
         >
           <GoogleLogin />
           <input
             type="text"
             name="email"
             placeholder="Correo electronico"
-            className="flex border-solid border-2 border-gray-500 items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-3"
+            className="flex border-solid border-2 border-gray-500 items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-3
+            md:h-16 md:text-lg md:mb-2"
           />
           <input
             type="password"
             name="password"
             placeholder="Contraseña"
             minLength={8}
-            className="flex border-solid border-2 border-gray-500  items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-5"
+            className="flex border-solid border-2 border-gray-500 items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-3
+            md:h-16 md:text-lg md:mb-2"
           />
           <input
             type="password"
             name="samePassword"
             placeholder="Repite tu Contraseña"
             minLength={8}
-            className="flex border-solid border-2 border-gray-500  items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-5"
+            className="flex border-solid border-2 border-gray-500 items-center justify-center  h-fit p-3  rounded-xl mx-5 mb-3
+            md:h-16 md:text-lg md:mb-5"
           />
           <BottomForm type="Registo" />
         </form>

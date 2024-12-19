@@ -18,14 +18,17 @@ export function TarjetaCategorias({ categoria }) {
   return (
     <div
       onClick={() => navigate(`/categorias/${categoria[0]}`)}
-      className="shadow flex  flex-1 justify-between items-center rounded-xl px-2 mb-5 py-3 cursor-pointer"
+      className="shadow flex  flex-1 justify-between items-center rounded-xl px-2 mb-5 py-3 cursor-pointer
+      md:px-6"
     >
       <div
-        className="w-16 h-16 flex justify-center items-center  rounded-full "
+        className="w-12 h-12 flex justify-center items-center  rounded-full 
+        md:w-20 md:h-20"
         style={{ backgroundColor: colors[categoria[0]] }}
       >
         <img
-          className=" w-12  p-1 invert"
+          className=" w-10  p-1 invert
+          md:w-16"
           src={
             categoria[0] === "Restaurantes"
               ? restaurantes
@@ -40,8 +43,19 @@ export function TarjetaCategorias({ categoria }) {
           alt=""
         />
       </div>
-      <h3 className="text-lg font-semibold text-left min-w-32 max-w-32 ">{categoria[0]}</h3>
-      <p>${categoria[1]}</p>
+      <h3
+        className="text-lg font-semibold text-left min-w-28 max-w-28 
+      md:text-2xl md:min-w-64 md:max-w-64
+      lg:px-4 "
+      >
+        {categoria[0]}
+      </h3>
+      <p
+        className="text-lg text-right 
+      max-w-20 min-w-20"
+      >
+        ${categoria[1]}
+      </p>
     </div>
   );
 }
