@@ -65,7 +65,7 @@ function NuevoGasto() {
     <>
       <header
         className="relative flex  justify-center bg-blue-700 py-2 rounded-b-3xl mx-3
-      md:py-4"
+      "
       >
         <Link
           to="/"
@@ -111,13 +111,13 @@ function NuevoGasto() {
           <section className="mt-5 ">
             <h3
               className="text-xl font-semibold 
-            md:text-3xl md:mb-10"
+            md:text-3xl md:mb-10 lg:mb-5"
             >
               Categoría
             </h3>
             <div
               className="grid grid-cols-3 gap-2 mx-2
-            md:gap-10"
+            md:gap-10 lg:grid-cols-5 lg:gap-3 lg:mx-20"
             >
               {categorias.map((categoria) => (
                 <div
@@ -154,36 +154,38 @@ function NuevoGasto() {
               ))}
             </div>
           </section>
-          <div className="mt-5">
-            <h3
-              className="text-xl font-semibold 
+          <section className="lg:flex lg:flex-row lg:justify-between lg:max-w-4xl lg:items-center lg:mt-5">
+            <div className="mt-5">
+              <h3
+                className="text-xl font-semibold 
             md:text-3xl "
-            >
-              Concepto
-            </h3>
-            <input
-              className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none ml-2
-              md:h-16 md:text-lg"
-              type="text"
-              name="concepto"
-              placeholder="Escribe un comentario..."
-              maxLength="25"
-            />
-          </div>
-          <div className="mt-5 ">
-            <h3
-              className="text-xl font-semibold 
+              >
+                Concepto
+              </h3>
+              <input
+                className="w-5/6 border-b-2 border-b-gray-300 bg-white h-10 px-2 pr-16  text-sm focus:outline-none ml-2
+              md:h-16 md:text-lg lg:min-w-72"
+                type="text"
+                name="concepto"
+                placeholder="Escribe un comentario..."
+                maxLength="25"
+              />
+            </div>
+            <div className="mt-5 ">
+              <h3
+                className="text-xl font-semibold 
             md:text-3xl"
-            >
-              Fecha
-            </h3>
-            <input
-              type="date"
-              name="fecha"
-              className="bg-gray-300 p-3 rounded-lg mt-3 cursor-pointer ml-2
+              >
+                Fecha
+              </h3>
+              <input
+                type="date"
+                name="fecha"
+                className="bg-gray-300 p-3 rounded-lg mt-3 cursor-pointer ml-2
               md:text-xl md:py-4 "
-            />
-          </div>
+              />
+            </div>
+          </section>
           <button
             className="bg-blue-700 py-2 px-8 text-white text-xl rounded-xl m-auto my-5
           md:text-3xl md:py-4 md:mt-10"
