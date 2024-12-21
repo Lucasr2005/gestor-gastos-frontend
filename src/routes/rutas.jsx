@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NuevoGasto from "../pages/NuevoGasto.jsx";
-import Gastos from "../pages/Gastos.jsx";
-import Categorias from "../pages/Categorias.jsx";
-import Login from "../pages/Login.jsx";
+import NuevoGasto from "../pages/nuevoGasto/NuevoGasto.jsx";
+import Gastos from "../pages/gastos/Gastos.jsx";
+import Categorias from "../pages/categorias/Categorias.jsx";
+import Login from "../pages/login-register/Login.jsx";
+import Register from "../pages/login-register/Register.jsx";
 import { ProtectedRoute } from "../middleWare/protectedRoute.jsx";
-import Register from "../pages/Register.jsx";
 export function Rutas() {
   return (
     <BrowserRouter>

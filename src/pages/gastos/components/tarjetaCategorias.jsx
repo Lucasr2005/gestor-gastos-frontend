@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import restaurantes from "../images/restaurantes.webp";
-import supermercado from "../images/supermercado.webp";
-import automovil from "../images/automovil.webp";
-import salud from "../images/salud.webp";
-import otros from "../images/otros.webp";
+import restaurantes from "../../../images/restaurantes.webp";
+import supermercado from "../../../images/supermercado.webp";
+import automovil from "../../../images/automovil.webp";
+import salud from "../../../images/salud.webp";
+import otros from "../../../images/otros.webp";
 
 export function TarjetaCategorias({ categoria }) {
   // console.log(categoria);

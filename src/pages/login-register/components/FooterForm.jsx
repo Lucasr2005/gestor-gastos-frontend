@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export function BottomForm({ type }) {
+export function FooterForm({ type }) {
   return (
-    <div
+    <footer
       className="flex row justify-between mx-2
     md:mb-5"
     >
@@ -26,6 +26,6 @@ export function BottomForm({ type }) {
       >
         {type === "login" ? "Iniciar" : "Registro"}
       </button>
-    </div>
+    </footer>
   );
 }
