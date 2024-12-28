@@ -60,8 +60,6 @@ export function LoginGoogle({ type, setError }) {
         type="standard"
         useOneTap
         logo_alignment="left"
-        isSignedIn
-        auto_select
       />
     </div>
   );
