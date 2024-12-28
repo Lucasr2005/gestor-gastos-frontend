@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:3001/api/user"
+const url = "https://gestor-gastos-backend.vercel.app/api/user"
 
 async function getUser(props) {
     try {
