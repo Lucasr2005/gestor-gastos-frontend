@@ -23,10 +23,17 @@ export function formSubmit(e, navigate, dispatch, setError, selected, setSelecte
             userID: user,
         })
         .then((response) => {
-            dispatch({
-                type: "AGREGAR_GASTO",
-                payload: response.response,
-            });
+            const oneMonthAgo = new Date();
+            oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+            const fechaDate = new Date(fecha);
+
+            if (fechaDate >= oneMonthAgo) {
+                console.log(response);
+                dispatch({
+                    type: "AGREGAR_GASTO",
+                    payload: response.response,
+                });
+            }
             navigate("/");
         });
 

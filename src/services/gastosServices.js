@@ -14,7 +14,6 @@ async function getGastos(user) {
     }
 }
 async function addGasto(gasto) {
-    console.log(gasto)
     try {
         const result = await axios.post(url, gasto)
         return result.data
