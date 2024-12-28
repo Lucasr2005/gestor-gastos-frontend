@@ -1,4 +1,4 @@
-import { GoogleLogin } from "./GoogleLogin.jsx";
+import { LoginGoogle } from "./GoogleLogin.jsx";
 import { FooterForm } from "./FooterForm.jsx";
 import { formSubmit } from "../functions/formSubmit.js";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 export function LoginForm({ setError }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   return (
     <form
       onSubmit={(e) => formSubmit(e, navigate, dispatch, setError, "login")}
@@ -13,7 +14,10 @@ export function LoginForm({ setError }) {
           md:h-fit md:w-fit
           lg:w-fit"
     >
-      <GoogleLogin />
+      <LoginGoogle
+        type="login"
+        setError={setError}
+      />
       <input
         type="text"
         name="email"

@@ -1,4 +1,4 @@
-import { GoogleLogin } from "./GoogleLogin.jsx";
+import { LoginGoogle } from "./GoogleLogin.jsx";
 import { FooterForm } from "./FooterForm.jsx";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -28,7 +28,10 @@ export function RegisterForm({ setError }) {
           md:h-fit md:w-fit
           lg:w-fit"
     >
-      <GoogleLogin />
+      <LoginGoogle
+        type="register"
+        setError={setError}
+      />
       <input
         type="text"
         name="email"

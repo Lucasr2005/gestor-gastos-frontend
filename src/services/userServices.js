@@ -1,10 +1,20 @@
 import axios from "axios";
 
-const url = "https://gestor-gastos-backend.vercel.app/api/user"
+const url = "http://localhost:3001/api/user"
 
 async function getUser(props) {
     try {
         const result = await axios.get(url, { params: props });
+        return result.data
+    }
+    catch (error) {
+        throw new Error(error.response.data.error)
+
+    }
+}
+async function getGoogleUser(props) {
+    try {
+        const result = await axios.get(`${url}/googleLogin`, { params: props });
         return result.data
     }
     catch (error) {
@@ -21,4 +31,4 @@ async function newUser(props) {
         throw new Error(error.response.data.error)
     }
 }
-export default { getUser, newUser }
+export default { getUser, getGoogleUser, newUser }

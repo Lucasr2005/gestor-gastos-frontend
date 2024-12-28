@@ -1,7 +1,7 @@
 import userServices from "../../../services/userServices.js";
 import gastosServices from "../../../services/gastosServices.js";
 
-function formSubmitSuccess(response, dispatch, navigate) {
+export function formSubmitSuccess(response, dispatch, navigate) {
     dispatch({
         type: "getUser",
         payload: response._id,
